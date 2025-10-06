@@ -88,5 +88,5 @@ Using one of the SDD frameworks helps you abstract some of this out and "DRY" up
 ### GitHub Copilot Coding Agent (aka. SWE Agent/Project Padawan)
 
 
-### Run - Phase 2: Asychronous Remote Development - "Squad of Agents"
+## Run - Phase 2: Asychronous Remote Development - "Squad of Agents"
 
