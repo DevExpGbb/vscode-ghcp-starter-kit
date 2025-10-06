@@ -76,6 +76,33 @@ But how does tihs differ from a project/repo ```README.md``` file?  In short...a
 
 ### Custom Chat Modes
 
+I would argue that custom chat modes are truly the precursor to "Custom Agents" in GHCP - but this is like...my opinon <insert big lebowski gif>.
+
+The biggest differences vs. custom prompts is as follows:
+
+1. "Agent" mode is already implied...there's no other mode to operate in - meaning you couldn't choose "ask" or "edit" even if you wanted to
+2. You explicitly switch into this mode just like you would with the built-in modes - "Ask", "Edit" and "Agent" for the duration of your chat session/until you swithc out of this mode.  This ensures you're not explicitly/manually having to invoke a command over and over again - but really - and more importantly you'll be grounding GHCP into a specific persona/workflow.  Meaning a custom chat mode is meant to tell GHCP that "YOU ARE A PLATFORM ENGINEER...." or "YOU ARE A DOTNET DEVELOPER" and follow it with more details on how to do that type of work
+3. You can configure a description for the chat mode, tools and the model to use...and that's it
+
+
+Just like a custom prompt file - there's a file/folder convention ```.github/chatmodes/<some-chat-mode-name>.chatmode.md```.  Once you've set that up you can pick from the chat mode drop down your new custom chat mode.
+
+Further to this - in my opinion - the chat mode is like a "meta mode" which you can use to define/curate/combine with prompts.  Since custom Prompts are like "executables" for one off actions, you could/should combine them for a type of work.
+
+Let me explain some more with the example of a Platform Engineer vs. a DotNet Developer.
+
+You may have prompt files (aka slash commands) for doing certain types of actions.  As a Platform Engineer you may want to deploy to Azure or AKS within Azure as an example.  You could have a ```/deploy``` slash command that only is used when in "platform mode".  This command/prompt is pretty useless when you're writing code - so you're not going to include it in your "DotNet Mode" (this can be argued but for this example we're jsut going to stick to our silos).  You may however have a ```/devops``` command which is universal - which includes how you push to a repo and kick off CI/CD.  As a result this command is reusable across workload personas and could be referenced in both the "Platform Mode" and the "DotNet Mode" custom chat modes.
+
+This way we have consistency by writing these prompts/commands in one place that both GHCP and a human can invoke, and we have a way to assemble/curate them into custom work/chat modes to group like activities/skills in one format.
+
+In the future - when we discuss "Continuous AI" or "Agentic Workflows" - these chat modes will be important - as we wont' be asking our LLMs to do a single task, but a grouping of tasks/skills for a given phase of our project.  Having custom chat modes/agents allows us to keep our context windows and skill set (including MCP tool calls) orgnaized and sane.  We don't want to just give all powers to the LLM/coding assistant as that may confuse it or us given a scoped task.
+
+We've got two custom chat modes to examine:
+- [devops](.github/chatmodes/devops-engineer.chatmode.md)
+- [platform arcihtect](.github/chatmodes/platform-architect.chatmode.md)
+
+note that they share one common prompt/command (```/terraform```) but have other non-overlapping/distinct commands at their disposal.  the roles are similar but may not have exactly the same types of tasks/skills to execute. (for the same of this starter I've left out the other slash commands/prompts in the ```.github/prompts``` directory that those sections refer to - but you can imagine that each slash command would correspond to a specific file just like the ```/terrform``` file matches to the ```.github/prompts/terraform.prompt.md``` file)
+
 ## "Party Pace"...heavy jogging/some running...We're now into Spec Driven Development (SDD)
 
 The previous section was quasi-manual/synchronous workflow with some "Vibing" on the work (I'm not a fan of the term or idea...but that's just me).  This is great I would say for quick prototypes and solutionining in the moment to get up and running but a larger problem especially in a larger more complex organization or perhaps a longer term iterative project would require something a bit more structured.  Arguably if "Vibe Coding" is on the "far-left" hand of AI Assisted Coding (Just "YOLO" the problem and roll the dice iteratively) we can think of Spec Driven Development as the current "far-right" hand side of AI Assisted Coding.
