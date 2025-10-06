@@ -22,9 +22,10 @@ If you're familiar with something like OpenAI's ChatGPT, Claude or Microsoft Cop
 Next up is the Inline Edit/Code Completions and Next Edit Suggestion Modes.  I'm going to to generalize them into one experience - in that it stems primarily from direct interaction with copilot in your code editing tab (current working file).  In these modes there are essentially 3 ways to interact with it:
 1. an inline chat box where you can ask it similar things like in the separate side chat box, except code can/will be directly injected into your file, while also providng potentially multiple solutions to the ask (multiple code blocks and you can choose which style you prefer). 
 2. A "code a head" inline experience where it can suggest on the current line or block of code you're working on and the presumed completion of that code you're currently trying to write.  You can also (with good habits) write inline comments or block comments to describe what you're trying to achive - think of it as inline documentation - which then GitHub Copilot can leverage that natural language definition as well as existing code in the file and your style in that project as the basis for creating a code completion.  This is great if you want to still write code manually but want a bit of a streamlined bump.
-3. Next Edit Suggestions takes into consideration what you're doing currently and thinking a couple of steps ahead - predicting what you're likely going to do beyond the current code block - as a result you'll get more than just the point solution on what you're writing and you'll get additional functions/methods etc within the given file...attempting to predict the future.  It's also a neat expereince to simply tab-ahead and accept code (after you've quickly reviewed what was generated of course ;) )
+3. Next Edit Suggestions takes into consideration what you're doing currently and thinking a couple of steps ahead - predicting what you're likely going to do beyond the current code block - as a result you'll get more than just the point solution on what you're writing and you'll get additional functions/methods etc within the given file...attempting to predict the future.  It's also a neat expereince to simply tab-ahead and accept code (after you've quickly reviewed what was generated of course ;) 
 
-#### Documentation Links:
+Helpful links/docs:
+
 - [Next Edit Suggestions - VS Code Docs](https://code.visualstudio.com/blogs/2025/02/12/next-edit-suggestions#_next-edit-suggestions-nes)
 - [Next Edit Suggestions - GitHub Docs](https://docs.github.com/en/copilot/concepts/completions/code-suggestions)
 
@@ -41,7 +42,7 @@ The previous section is certainly helpful when you're working on new/novel/bespo
 
 ### Custom Chat Modes
 
-## Party Pace...heavy jogging/some running...We're now into Spec Driven Development
+## "Party Pace"...heavy jogging/some running...We're now into Spec Driven Development (SDD)
 
 The previous section was quasi-manual/synchronous workflow with some "Vibing" on the work (I'm not a fan of the term or idea...but that's just me).  This is great I would say for quick prototypes and solutionining in the moment to get up and running but a larger problem especially in a larger more complex organization or perhaps a longer term iterative project would require something a bit more structured.  Arguably if "Vibe Coding" is on the "far-left" hand of AI Assisted Coding (Just "YOLO" the problem and roll the dice iteratively) we can think of Spec Driven Development as the current "far-right" hand side of AI Assisted Coding.
 
@@ -51,8 +52,36 @@ In other words:
 
 The reality/truth is likely somewhere inbetween...and we've likely not seen the last evolution of this as we've gone from "Vibes" to "Spec Driven" in short order (~6 months).  Just like we saw software development evolve with waterfall/agile etc. over the years, we're likely going to see new solutions to problems at scale when AI evolves and our distributed software development lifecylce grows out of the control at human scale.
 
-### Spec Kit 
+### Spec Kit
 
+From a GitHub/Microsoft POV we've released and Open Sourced [Spec Kit](https://speckit.org/).  I personally see it like a scafolding generator similar to "rails generate" or other type tools for defining what your specification driven development would look like for your team.  Taking advantage of the features we have today in AI Assisted Coding Agents like GitHub Copilot (GHCP) we can help structure, reuse and call upon prompts that are at our disposal to accomplish our work.  Recall in the eariler ["Walk"](#walk---synchronous-local-development) section we were able to take advantage of custom prompts, custom instructions and custom chat modes?  Well [Spec Kit](https://speckit.org) allows us to leverage these these building blocks to help guide us and GHCP (or any other AI Coding Assistant you prefer) to develop what our project/product goals are for the current repo.
+
+To find out more about Spec Kit - I highly suggest giving Den Delimarsky a follow on [linkedin](https://www.linkedin.com/in/dendeli/) and on [YouTube](https://www.youtube.com/channel/UCNHIUc6KE64sUe5G0eP70aQ) if you want to keep up to date on Spec Kit as well as MCP (especially Authentication/Authorization for MCP).
+
+> [!Note]
+> There are more than one approach/framework for Spec Driven Development (SDD) - Spec Kit is one flavour/implementation but there are others like [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) and [Agent-OS](https://github.com/buildermethods/agent-os).  Just like debates around language models (GPT vs. Claude vs. Qwen etc.) Your personal preference and style is most important as an individual as well as a team.  They're all "just prompts" so it's not hard to adjust, evolve and move between them - just make sure you're creating some standards and structures to guide yourselves as humans and as human-like LLMs...good luck!
+
+### So What, Who Cares?
+
+You're probably asking yourself "So what, who cares?" - well what you'll learn if you haven't already, is that if you set an LLM/Coding Assistant out on a poorly defined task - your results are varied to say the least.  SDD will help to keep it on track by providing (in general) your coding/tech standards (usually in the form of a custom instruction file like ```copilot-instructions.md``` or ```AGETNS.md```) as well as some repeatable "commands"/prompts that are general purpose enough but guided so that you have some type of quasi-near-deterministic work output...of course the exact output is not going to be 100% the same - but you're generally guaranteed that it'll be in very close ball park of what you want to achieve.
+
+One exterme of vibe coding would be "make me a social network platform to manage my kid's soccer league"...okay...that might work sorta...but the LLM need to do a ton of work with not much defined in the way for it to track what needs to be done, what your preferred tech implementation would be etc.  So it'll guess.  What if it or your computer stops mid "vibe"?? How do you recover?  How do you track and make sure you've completed the landing page before moving on.
+
+Again - this is an exterme case but the point is clear - if you're working on something simple and qiuck this may work well.  If you're building something larger like a social network you're likely going to get more organized before you or the AI starts to engineer a solution.
+
+Here's where SDD comes in.
+
+With SDD - and if you're using one of the SDD "frameworks" or "engines" - you start off with the why/who and start to generate the higher level non-coding related documents needed to keep us all sane (people and robots).  You may have heard or Product Requirement Docs, Spec Docs etc. etc.  Whatever you prefer, whatever you want to call them - they're the foundation of work that we all knew were "best practices" but avoided as it was in our way of just jumping into code...or maybe that's just me.
+
+In general the SDD frameworks provide guidance and structure to how to plan out your project and often have built in prompts to employ "memory" and "task" techniques to keep your AI Assistants on track.
+
+Often you're limited by context/token limits (how much of the current generated conversation input/output) you have access to.  Some models are limited to ~128K Tokens/Context Window Sizes - some are in the order of 1M...regardless it's not infinite and even if it were you'll find that they generally perform better at the lower end of (~30K Tokens) or so - your mileage may vary.
+
+Employing chat compaction, memory, task lists/todos etc. etc are extremly important to keep your AI on task.  It can refer back to these things as needed or not at all depending on the type of work it needs to do in the given moment.  Some functions are in isolation of another...some reqiure a larger view of the entire codebase so having things like ```AGENTS.md``` to provide the agent (e.g. GitHub Copilot) a view of the project structure without having to crawl/regenerate it is very helpful.
+
+Having a coding standard/tech stack document ensures that the AI doesn't arbitrarily decide to use a different MVC framework or Database type mid project.
+
+Using one of the SDD frameworks helps you abstract some of this out and "DRY" up your process when structuring your various types of prompts.
 
 ## Run - Phase 1: Asynchronous Remote Development - "Single Agent" 
 
