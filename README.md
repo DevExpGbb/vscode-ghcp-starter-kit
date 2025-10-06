@@ -148,6 +148,8 @@ Using one of the SDD frameworks helps you abstract some of this out and "DRY" up
 
 ### GitHub Copilot Coding Agent (aka. SWE Agent/Project Padawan)
 
+WIP - DEMO GHCP Coding Agent - Assign it work
 
 ## Run - Phase 2: Asychronous Remote Development - "Squad of Agents"
 
+WIP - DEMO "Agentic Workflows" from GH Next Team
