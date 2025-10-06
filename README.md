@@ -54,6 +54,14 @@ Examine the [.github/prompts/prd.prompt.md](.github/prompts/prd.prompt.md) file 
 
 ### Custom Instructions
 
+You may find that you always want certain outcomes or rules to be applied.  This is where [GitHub Copilot custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) come into play.  These custom instructions are ALWAYS sent as part of the interaction with GitHub Copilot in your given workspace (repo).  There are two levels of custom instructions:
+- ```%repo-root%/.github/copilot-instructions.md``` file - which is the top level instructions file, sent with each and every request to GHCP.  Use this file when you want rules to always be atomatically applied to all chat requests in the given workspace
+- ```%repo-root$/.github/instructions/*.instructions.md``` this is an instruction file scoped via the ```applyTo``` yaml header frontmatter config of the markdown file wihch is a list of file extensions that the rule applies to.  Let's say you always have a rule for writing Terraform or maybe a given programming language like Typescript - this could be style/coding syntax - it could be rules around testing - but it's only applicable to that file format (*.tf or *.ts) then you can write multiple files in there and they'd only apply if you/GHCP are working on those formats.
+
+In general I would say that if you have strong opinions on the tech stack for your given project/repo/workspace - Custom Instructions are the best place to put them as they are implicitly sent on your behalf - you do not need to explicitly invoke these rules...they're a great passive skill :D
+
+> [!Note] There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom chat modes
+
 #### Copilot Custom Instructions vs. AGENTS.md vs. README.md
 
 ### Custom Chat Modes
