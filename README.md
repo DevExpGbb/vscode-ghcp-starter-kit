@@ -62,7 +62,17 @@ In general I would say that if you have strong opinions on the tech stack for yo
 
 > [!Note] There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom chat modes
 
+Take a look at the custom instructions in the starter kit:
+- [Copilot Instructions](.github/copilot-instructions.md)
+- [Terraform Custom Instructions](.github/instructions/terraform.instructions.md)
+
 #### Copilot Custom Instructions vs. AGENTS.md vs. README.md
+
+You'll find that as the industry evolves - good folks will get together and start to formalize and standardize on their implementations to help improve the developer experience/ergonomics.  The emergence of [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) (MCP) as an open community/standard to extend LLMs/Agents is one example.  The "[AGENTS.md](https://agents.md)" is another example of this.
+
+What you'll find is that AGENTS.md is an attempt to unify the various "rules" or "custom instructions" formats that are out there in the vendor specific implementation of coding assistants/agents.  Today both [GitHub Copilot Coding Agent](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent) and Github Copiot in VS Code (as of VS Code v. 1.104) support the AGENTS.md file in addition to the copilot specific format.  This helps to allow you to write a single rules file across your various coding agent environments going forward...
+
+But how does tihs differ from a project/repo ```README.md``` file?  In short...a ```README.md``` is meant for a human to read - it can be long...it can be more detailed...but really the intended audience is humanz.  An LLM can still take advantage of it (it will inevitably) but an ```AGENTS.md``` file along with other prompts is a shortcut and always picked up by the agents/llms going forwad as part of each vendor platform.  You can make things more terse and put it in a structure/format that is more computer friendly as a result.
 
 ### Custom Chat Modes
 
