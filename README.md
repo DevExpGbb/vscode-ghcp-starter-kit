@@ -36,6 +36,22 @@ The previous section is certainly helpful when you're working on new/novel/bespo
 
 ### Prompts
 
+Reusable [prompt files](https://code.visualstudio.com/docs/copilot/customization/prompt-files) are the fundamental building blocks for success.  They're nothing magical - they're just Markdown files...but they are a great way to have easy access to "commands" that can be used over and over again to interact with GitHub Copilot (or any AI assistant for that matter).  The true magic of a prompt file in VS Code are:
+
+1. "Slash Commands" - by following the file/folder convention of ```%repo-root%/.github/prompts/<some-file-name>.prompt.md``` you can gain access to invoking the prompt in the GitHub Copilot Chat interface buy typing ```/<some-file-name>``` before or after by any additional info you want to provide. Take for example one of our "starter prompts" for writing a Product Requirements Doc (PRD) in [.github/prompts/prd.prompt.md](.github/prompts/prd.prompt.md).  It is a quick way to ensure that the LLM follows your/your team's way of writing a PRD - presuming you have a defined way of doing it today.  This ensures that you have consistency and clear identifable and repeatable way of generating these docs (which you may have avoided writing) going forward with the AI doing the true heavy lift.  Should you not provide sufficient information the AI/Coding Assistant/LLM can ask you more questions in order to create a better doc...pretty slick if you ask me...
+
+2. Well defined meta parameters/config in it's Markdown file format.  A GHCP prompt file has a well defined [file format](https://code.visualstudio.com/docs/copilot/customization/prompt-files#_prompt-file-format) which consissts of:
+- an optional Header that has 4 config properties: [Description, mode (ask, edit or agent), model (language modle you prefer for this prompt), tools (MCP tools or local VS Code extensions exposed as tools that GHCP is allowed access to)]
+- a required Body which is the natural lanaguage prompt/markdown magic that the LLM is instructed to follow.
+
+This allows you to create reusable patterns and keep GHCP grounded to a specific task/action.  
+
+Prompts (and Custom Chat Modes) is the early base precursor to broader "Agents" or "Custom Agentic Capabilities" you can define in the future with GitHub Copilot and in general terms - but isn't available YET as of this projects' publish data (October 6th, 2025).  We will however discuss ["Continuous AI"](https://githubnext.com/projects/continuous-ai/) and "[Agentic Workflows](https://githubnext.com/projects/agentic-workflows/)" in a later section from the good folks at "[GitHub Next](https://githubnext.com)".
+
+Examine the [.github/prompts/prd.prompt.md](.github/prompts/prd.prompt.md) file for it's structure - note that we've defined the base model (Claude Sonnet 4) it's mode (Agent - which is default if left out) as well as a description of what the prompt does in general to "prime" GHCP.  Note we've left of which tools it has to use - but we could/should scope it down to "edit" only - such that it can only write to our local file system (create the new PRD markdown file).  Without this tool - it will generate the PRD but only within the chat history - even though we've defined it to be in "Agent Mode" within the config itself.  Give it a try :)
+
+> [!Note] The Prompt File is added as part of the User Prompt in a chat - meaning it's auto appended/filled into the prompt sent to GHCP on the given request.  This contrasts to how "Custom chat modes" work...which we'll discuss later.
+
 ### Custom Instructions
 
 #### Copilot Custom Instructions vs. AGENTS.md vs. README.md
