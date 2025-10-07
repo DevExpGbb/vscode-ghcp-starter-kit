@@ -54,7 +54,7 @@ jobs:
           fi
           echo "All safety checks passed. Proceeding with agentic tool execution."
         env:
-          GH_TOKEN: ${{ secrets.AWPAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   agent:
     runs-on: ubuntu-latest
@@ -979,7 +979,7 @@ jobs:
           GITHUB_AW_PROMPT: /tmp/aw-prompts/prompt.txt
           GITHUB_AW_SAFE_OUTPUTS: ${{ env.GITHUB_AW_SAFE_OUTPUTS }}
           GITHUB_STEP_SUMMARY: ${{ env.GITHUB_STEP_SUMMARY }}
-          GITHUB_TOKEN: ${{ secrets.AWPAT  }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_CLI_TOKEN  }}
           XDG_CONFIG_HOME: /home/runner
       - name: Print agent log
         if: always()
@@ -2137,7 +2137,7 @@ jobs:
           COPILOT_AGENT_RUNNER_TYPE: STANDALONE
           GITHUB_AW_PROMPT: /tmp/aw-prompts/prompt.txt
           GITHUB_STEP_SUMMARY: ${{ env.GITHUB_STEP_SUMMARY }}
-          GITHUB_TOKEN: ${{ secrets.AWPAT  }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_CLI_TOKEN  }}
           XDG_CONFIG_HOME: /home/runner
       - name: Print agent log
         if: always()
@@ -2481,4 +2481,3 @@ jobs:
               core.error(`Error processing missing-tool reports: ${error}`);
               core.setFailed(`Error processing missing-tool reports: ${error}`);
             });
-
