@@ -187,4 +187,4 @@ WIP - How do you create your own "Agents" today in GitHub using GitHub Actions a
 
 ## Run - Phase 3: Asychronous Remote Development - "Squad of Agents"
 
-What does critical scale look like when 
+WIP - Future.
