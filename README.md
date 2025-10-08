@@ -144,12 +144,37 @@ Having a coding standard/tech stack document ensures that the AI doesn't arbitra
 
 Using one of the SDD frameworks helps you abstract some of this out and "DRY" up your process when structuring your various types of prompts.
 
+## Running with GitHub Copilot Asynchronously
+
+In the Crawl/Walk phase we're primarily focused on how GitHub Copilot can help enhance our work in our local/inner development loop as a human.  Meaning, we were primarily focused on how to take advantage of AI Assisted coding as an augmentation to our own work and skillset at direct human scale and speed.  
+
+In this Run Phase, we'll be looking at how we can offload work to an Agent asynchronously - meaning how can we assign work to Agent(s) without the need for our IDE/Local Development environment to be always on - we can walk away or close our computer while work is being done on our behalf in the cloud. 
+
 ## Run - Phase 1: Asynchronous Remote Development - "Single Agent" 
 
 ### GitHub Copilot Coding Agent (aka. SWE Agent/Project Padawan)
 
 WIP - DEMO GHCP Coding Agent - Assign it work
 
+GitHub Copilot "Coding Agent"...not to be confused with GitHub Copilot "Agent Mode" (local in IDE synchronous work agent) - is a version of GitHub Copilot that you full interact with remotely - meaning it is an entity that lives completely in the cloud.  The environment in wihch it runs is entirely remote and it runs within the context of GitHub Actions - meaning the environment is ephemeral and is built upon the fundamental building block that is GitHub Actions.
+
+In some literature you'll find that this mode of operation is often referred to as a "Copilot Coding Agent (CCA)", "Software Engineering Agent" or "SWE Agent".  In some official GitHub blog articles it was referred to as "Project Padawan".  The name isn't as important as the fact that it is essentially a bot to which you can assign work to.
+
+Today (Timestamp: October 7th 2025), the GitHub Copilot Coding Agent is given work primarily by assigning it to a GitHub issue as an "assignee" just as you would yourself or another teammate in GitHub.  This automatically triggers an even to which GitHub Copilot Coding Agent can then pick up and start creating a PR and a new git branch to work from.
+
+The most valuable piece of this - beyond the task output (i.e. written code) from Copilot - is the fact that you can "view session" which is the ability to observe Copilot's thought and working processs.  More invaluable than its code output is learning how it approaches work and its thought process (however flawed/imperfect it may be).  
+
+If during the PR Code Review process you find that it needs to improve on what was accomplished, you can simply "```@copilot```" in the comments and even inline in code review comments as well.  This triggers a new session within the PR and allows it to fix its mistakes just like a human team mate would.
+
+> [!Note]
+> Since the primary interface is via a GitHub Issue - you should treat the Issue Body as the "user prompt" you would normally provide GitHub Copilot in your IDE - meaning you should give it good context and a defined task and description of the work to be done.  You can also provide it images (e.g. Screenshots) as part of the Issue Body, and since the the model has Vision capabilities, it can "see" and make sense of the visual requirements you have as well.
+
+The GitHub Copilot Coding Agent has access to both the GitHub MCP server and the Playwright MCP server by default, so if you need more context from the git repo, or need it to generate a screenshot of your web app or create Playwrite interaction/integration tests via your web UI it can do so.  Extending from this you can add any arbitrary MCP server (presuming your organization allows this) to further extend the capabilities that Copilot can perform, similar to how you can add MCP severs to VS Code such that GitHub Copilot in "Agent Mode" (remmeber there's a difference) to extend its capabilities.  There are some limitations based on the networking/security model but there's also facility to create allow/deny list rules. 
+
+My example here why this Asynchronous mode matters: You are likely attending more meetings than you have time to actually sit down and write code...but assigning it to GitHub Copilot Coding Agent allows you to come back and review the work and keep the ball moving.
+
+In the next section we'll start to discuss the future state of having a fleet of these agents working for us and how/why we might possibly implement this in our day-to-day activities.
+
 ## Run - Phase 2: Asychronous Remote Development - "Squad of Agents"
 
-WIP - DEMO "Agentic Workflows" from GH Next Team
+What does critical scale look like when 
