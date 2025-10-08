@@ -177,6 +177,14 @@ My example here why this Asynchronous mode matters: You are likely attending mor
 
 In the next section we'll start to discuss the future state of having a fleet of these agents working for us and how/why we might possibly implement this in our day-to-day activities.
 
-## Run - Phase 2: Asychronous Remote Development - "Squad of Agents"
+## Run - Phase 2: Building your own custom Agents
+
+WIP - How do you create your own "Agents" today in GitHub using GitHub Actions and an LLM service?
+
+- [GitHub Action/AI-Inference](https://github.com/actions/ai-inference)
+- [GitHub Next Continuous AI](https://githubnext.com/projects/continuous-ai/)
+- [GitHub Next Agentic Workflow](https://githubnext.com/projects/agentic-workflows/)
+
+## Run - Phase 3: Asychronous Remote Development - "Squad of Agents"
 
 What does critical scale look like when 
