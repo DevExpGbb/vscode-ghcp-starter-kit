@@ -61,7 +61,8 @@ You may find that you always want certain outcomes or rules to be applied.  This
 
 In general I would say that if you have strong opinions on the tech stack for your given project/repo/workspace - Custom Instructions are the best place to put them as they are implicitly sent on your behalf - you do not need to explicitly invoke these rules...they're a great passive skill :D
 
-> [!Note] There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom chat modes
+> [!Note] 
+> There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom chat modes
 
 Take a look at the custom instructions in the starter kit:
 - [Copilot Instructions](.github/copilot-instructions.md)
