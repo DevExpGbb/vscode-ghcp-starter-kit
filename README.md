@@ -50,7 +50,8 @@ Prompts (and Custom Chat Modes) is the early base precursor to broader "Agents" 
 
 Examine the [.github/prompts/prd.prompt.md](.github/prompts/prd.prompt.md) file for it's structure - note that we've defined the base model (Claude Sonnet 4) it's mode (Agent - which is default if left out) as well as a description of what the prompt does in general to "prime" GHCP.  Note we've left of which tools it has to use - but we could/should scope it down to "edit" only - such that it can only write to our local file system (create the new PRD markdown file).  Without this tool - it will generate the PRD but only within the chat history - even though we've defined it to be in "Agent Mode" within the config itself.  Give it a try :)
 
-> [!Note] The Prompt File is added as part of the User Prompt in a chat - meaning it's auto appended/filled into the prompt sent to GHCP on the given request.  This contrasts to how "Custom chat modes" work...which we'll discuss later.
+> [!Note] 
+> The Prompt File is added as part of the User Prompt in a chat - meaning it's auto appended/filled into the prompt sent to GHCP on the given request.  This contrasts to how "Custom chat modes" work...which we'll discuss later.
 
 ### Custom Instructions
 
