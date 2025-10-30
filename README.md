@@ -9,6 +9,7 @@ We aim to show how a developer can progress back and forth from "Vibe Coding" to
 - [Full GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [Github Copilot in VS Code Docs](https://code.visualstudio.com/docs/copilot/overview)
 - [VS Code Release Notes (August)](https://code.visualstudio.com/updates/v1_104)
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
 
 
 ## Crawl
