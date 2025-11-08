@@ -15,6 +15,17 @@ We aim to show how a developer can progress back and forth from "Vibe Coding" to
 - [VS Code Release Notes (August)](https://code.visualstudio.com/updates/v1_104)
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
 
+## Weekly Research Reports
+
+Stay informed about the latest trends in AI-assisted development with our [weekly research reports](./docs/research/). These automated reports track:
+
+- **Industry Trends**: GitHub Copilot evolution, MCP ecosystem growth, competitive landscape analysis
+- **Product Updates**: New features, tools, and frameworks in the AI coding assistant space
+- **Research Insights**: Academic papers, emerging methodologies, and best practices
+- **Market Analysis**: Investment trends, ROI metrics, and business opportunities
+- **Innovation Ideas**: Actionable recommendations for enhancing this starter kit and your AI-assisted workflows
+
+Latest report: [AI-Assisted Development Landscape - October 20, 2025](./docs/research/2025-10-20-ai-assisted-development-landscape.md)
 
 ## Crawl
 
