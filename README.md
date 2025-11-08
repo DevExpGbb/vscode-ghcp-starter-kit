@@ -47,12 +47,20 @@ Reusable [prompt files](https://code.visualstudio.com/docs/copilot/customization
 
 This allows you to create reusable patterns and keep GHCP grounded to a specific task/action.  
 
-Prompts (and Custom Chat Modes) is the early base precursor to broader "Agents" or "Custom Agentic Capabilities" you can define in the future with GitHub Copilot and in general terms - but isn't available YET as of this projects' publish data (October 6th, 2025).  We will however discuss ["Continuous AI"](https://githubnext.com/projects/continuous-ai/) and "[Agentic Workflows](https://githubnext.com/projects/agentic-workflows/)" in a later section from the good folks at "[GitHub Next](https://githubnext.com)".
+Prompts and Custom Agents [nee: "Custom Chat Modes"] are the early base precursor to broader "Agents" or "Custom Agentic Capabilities" you can define in the future with GitHub Copilot and in general terms - but isn't available YET as of this projects' publish data (October 6th, 2025).  We will however discuss ["Continuous AI"](https://githubnext.com/projects/continuous-ai/) and "[Agentic Workflows](https://githubnext.com/projects/agentic-workflows/)" in a later section from the good folks at "[GitHub Next](https://githubnext.com)".
+
+> [!NOTE]
+> As of at least Nov 5th, 2025 Custom Chat Modes are now "Custom Agents" usable in GitHub.com and in VS Code Insiders (Soon to be in VS Code Stable)
+> In this article "Custom Chat Modes" will be updated to "Custom Agents", but you may see discrepencies here or in other materials - treat them as interchangable/synonymous terms going forward
+> 
+> See these articles for more details:
+> https://code.visualstudio.com/blogs/2025/11/03/unified-agent-experience#_planning-agent
+> https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents#using-custom-agents-as-vs-code-chat-modes
 
 Examine the [.github/prompts/prd.prompt.md](.github/prompts/prd.prompt.md) file for it's structure - note that we've defined the base model (Claude Sonnet 4) it's mode (Agent - which is default if left out) as well as a description of what the prompt does in general to "prime" GHCP.  Note we've left of which tools it has to use - but we could/should scope it down to "edit" only - such that it can only write to our local file system (create the new PRD markdown file).  Without this tool - it will generate the PRD but only within the chat history - even though we've defined it to be in "Agent Mode" within the config itself.  Give it a try :)
 
 > [!Note] 
-> The Prompt File is added as part of the User Prompt in a chat - meaning it's auto appended/filled into the prompt sent to GHCP on the given request.  This contrasts to how "Custom chat modes" work...which we'll discuss later.
+> The Prompt File is added as part of the User Prompt in a chat - meaning it's auto appended/filled into the prompt sent to GHCP on the given request.  This contrasts to how "Custom Agents" work...which we'll discuss later.
 
 ### Custom Instructions
 
@@ -63,7 +71,7 @@ You may find that you always want certain outcomes or rules to be applied.  This
 In general I would say that if you have strong opinions on the tech stack for your given project/repo/workspace - Custom Instructions are the best place to put them as they are implicitly sent on your behalf - you do not need to explicitly invoke these rules...they're a great passive skill :D
 
 > [!Note] 
-> There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom chat modes
+> There currently isn't any additional configuraiton settings for custom instructions beyond the "```applyTo```" setting and of course the body of your markdown prompt. Unlike custom prompts and custom agents
 
 Take a look at the custom instructions in the starter kit:
 - [Copilot Instructions](.github/copilot-instructions.md)
@@ -77,30 +85,32 @@ What you'll find is that AGENTS.md is an attempt to unify the various "rules" or
 
 But how does tihs differ from a project/repo ```README.md``` file?  In short...a ```README.md``` is meant for a human to read - it can be long...it can be more detailed...but really the intended audience is humanz.  An LLM can still take advantage of it (it will inevitably) but an ```AGENTS.md``` file along with other prompts is a shortcut and always picked up by the agents/llms going forwad as part of each vendor platform.  You can make things more terse and put it in a structure/format that is more computer friendly as a result.
 
-### Custom Chat Modes
+### Custom Agents
 
 I would argue that custom chat modes are truly the precursor to "Custom Agents" in GHCP - but this is like...my opinon <insert big lebowski gif>.
+
+> [!Note] Beginning as of Nov 5, 2025 - the naming/wording of "Custom Chat Modes" has been changed to "Custom Agents" - so it was clearly the way it evolved as expected.
 
 The biggest differences vs. custom prompts is as follows:
 
 1. "Agent" mode is already implied...there's no other mode to operate in - meaning you couldn't choose "ask" or "edit" even if you wanted to
-2. You explicitly switch into this mode just like you would with the built-in modes - "Ask", "Edit" and "Agent" for the duration of your chat session/until you swithc out of this mode.  This ensures you're not explicitly/manually having to invoke a command over and over again - but really - and more importantly you'll be grounding GHCP into a specific persona/workflow.  Meaning a custom chat mode is meant to tell GHCP that "YOU ARE A PLATFORM ENGINEER...." or "YOU ARE A DOTNET DEVELOPER" and follow it with more details on how to do that type of work
+2. You explicitly switch into this mode just like you would with the built-in modes - "Ask", "Edit" and "Agent" for the duration of your chat session/until you swithc out of this mode.  This ensures you're not explicitly/manually having to invoke a command over and over again - but really - and more importantly you'll be grounding GHCP into a specific persona/workflow.  Meaning a Custom Agent is meant to tell GHCP that "YOU ARE A PLATFORM ENGINEER...." or "YOU ARE A DOTNET DEVELOPER" and follow it with more details on how to do that type of work
 3. You can configure a description for the chat mode, tools and the model to use...and that's it
 
 
-Just like a custom prompt file - there's a file/folder convention ```.github/chatmodes/<some-chat-mode-name>.chatmode.md```.  Once you've set that up you can pick from the chat mode drop down your new custom chat mode.
+Just like a custom prompt file - there's a file/folder convention ```.github/chatmodes/<some-chat-mode-name>.chatmode.md```.  Once you've set that up you can pick from the chat mode drop down your new Custom Agent.
 
 Further to this - in my opinion - the chat mode is like a "meta mode" which you can use to define/curate/combine with prompts.  Since custom Prompts are like "executables" for one off actions, you could/should combine them for a type of work.
 
 Let me explain some more with the example of a Platform Engineer vs. a DotNet Developer.
 
-You may have prompt files (aka slash commands) for doing certain types of actions.  As a Platform Engineer you may want to deploy to Azure or AKS within Azure as an example.  You could have a ```/deploy``` slash command that only is used when in "platform mode".  This command/prompt is pretty useless when you're writing code - so you're not going to include it in your "DotNet Mode" (this can be argued but for this example we're jsut going to stick to our silos).  You may however have a ```/devops``` command which is universal - which includes how you push to a repo and kick off CI/CD.  As a result this command is reusable across workload personas and could be referenced in both the "Platform Mode" and the "DotNet Mode" custom chat modes.
+You may have prompt files (aka slash commands) for doing certain types of actions.  As a Platform Engineer you may want to deploy to Azure or AKS within Azure as an example.  You could have a ```/deploy``` slash command that only is used when in "platform mode".  This command/prompt is pretty useless when you're writing code - so you're not going to include it in your "DotNet Mode" (this can be argued but for this example we're jsut going to stick to our silos).  You may however have a ```/devops``` command which is universal - which includes how you push to a repo and kick off CI/CD.  As a result this command is reusable across workload personas and could be referenced in both the "Platform Mode" and the "DotNet Mode" Custom Agent.
 
 This way we have consistency by writing these prompts/commands in one place that both GHCP and a human can invoke, and we have a way to assemble/curate them into custom work/chat modes to group like activities/skills in one format.
 
-In the future - when we discuss "Continuous AI" or "Agentic Workflows" - these chat modes will be important - as we wont' be asking our LLMs to do a single task, but a grouping of tasks/skills for a given phase of our project.  Having custom chat modes/agents allows us to keep our context windows and skill set (including MCP tool calls) orgnaized and sane.  We don't want to just give all powers to the LLM/coding assistant as that may confuse it or us given a scoped task.
+In the future - when we discuss "Continuous AI" or "Agentic Workflows" - these chat modes will be important - as we wont' be asking our LLMs to do a single task, but a grouping of tasks/skills for a given phase of our project.  Having Custom Agents allows us to keep our context windows and skill set (including MCP tool calls) orgnaized and sane.  We don't want to just give all powers to the LLM/coding assistant as that may confuse it or us given a scoped task.
 
-We've got two custom chat modes to examine:
+We've got two Custom Agents to examine (Note these are still in the older "Custom Chat Mode" folder convention/syntax and will need to be migrated accordingly):
 - [devops](.github/chatmodes/devops-engineer.chatmode.md)
 - [platform arcihtect](.github/chatmodes/platform-architect.chatmode.md)
 
@@ -118,7 +128,7 @@ The reality/truth is likely somewhere inbetween...and we've likely not seen the 
 
 ### Spec Kit
 
-From a GitHub/Microsoft POV we've released and Open Sourced [Spec Kit](https://speckit.org/).  I personally see it like a scafolding generator similar to "rails generate" or other type tools for defining what your specification driven development would look like for your team.  Taking advantage of the features we have today in AI Assisted Coding Agents like GitHub Copilot (GHCP) we can help structure, reuse and call upon prompts that are at our disposal to accomplish our work.  Recall in the eariler ["Walk"](#walk---synchronous-local-development) section we were able to take advantage of custom prompts, custom instructions and custom chat modes?  Well [Spec Kit](https://speckit.org) allows us to leverage these these building blocks to help guide us and GHCP (or any other AI Coding Assistant you prefer) to develop what our project/product goals are for the current repo.
+From a GitHub/Microsoft POV we've released and Open Sourced [Spec Kit](https://speckit.org/).  I personally see it like a scafolding generator similar to "rails generate" or other type tools for defining what your specification driven development would look like for your team.  Taking advantage of the features we have today in AI Assisted Coding Agents like GitHub Copilot (GHCP) we can help structure, reuse and call upon prompts that are at our disposal to accomplish our work.  Recall in the eariler ["Walk"](#walk---synchronous-local-development) section we were able to take advantage of custom prompts, Custom Instructions and Custom Agents?  Well [Spec Kit](https://speckit.org) allows us to leverage these these building blocks to help guide us and GHCP (or any other AI Coding Assistant you prefer) to develop what our project/product goals are for the current repo.
 
 To find out more about Spec Kit - I highly suggest giving Den Delimarsky a follow on [linkedin](https://www.linkedin.com/in/dendeli/) and on [YouTube](https://www.youtube.com/channel/UCNHIUc6KE64sUe5G0eP70aQ) if you want to keep up to date on Spec Kit as well as MCP (especially Authentication/Authorization for MCP).
 
