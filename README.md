@@ -1,5 +1,9 @@
 # Visual Studio Code and GitHub Copilot Starter Kit
 
+> [!Note]
+> "Custom Chat Modes" is being renamed/migrated to "Custom Agents".  As such you may see older documentation and guides referring to "Custom Chat Modes" and with older ```.github/chatmodes/*.chatmode.md``` file/folder conventions as well as slightly different syntax.  Where you see Copilot Custom Agents and updated documentation with the new ```.github/agents``` conventions note that this is referring to essentailly the same things.  You will need to update and ensure that the new format is used going forward, so that you can have access to these agents in both VS Code and in GitHub.com.
+> Currently this feature is only available in VS Code Insiders as of early November but will be made available in VS Code Stable shortly   
+
 A repo to demo ways to enhance your Visual Studio Code + GitHub Copilot developer experience.  
 
 We aim to show how a developer can progress back and forth from "Vibe Coding" to "Spec Driven Development" - by taking advantage of different modes of work in the age of AI Assisted Development. 
